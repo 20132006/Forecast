@@ -9,7 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.artlab.forecast.MainActivity;
 import com.example.artlab.forecast.R;
+import com.example.artlab.forecast.onMapClicked;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
@@ -18,7 +20,20 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 
-public class mapFragment extends Fragment implements OnMapReadyCallback {
+public class mapFragment extends Fragment implements OnMapReadyCallback, GoogleMap.OnMapClickListener {
+
+    private GoogleMap mGoogleApiClient;
+    MapFragment fragment;
+    onMapClicked listenOnMapClick;
+
+    public mapFragment(MainActivity listener)
+    {
+        setInterface(listener);
+    }
+
+    public void setInterface(onMapClicked listenOnMapClick) {
+        this.listenOnMapClick = listenOnMapClick;
+    }
 
 
     @Nullable
@@ -32,7 +47,7 @@ public class mapFragment extends Fragment implements OnMapReadyCallback {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        MapFragment fragment = (MapFragment)getChildFragmentManager().findFragmentById(R.id.map);
+        fragment = (MapFragment)getChildFragmentManager().findFragmentById(R.id.map);
         fragment.getMapAsync(this);
     }
 
@@ -43,6 +58,15 @@ public class mapFragment extends Fragment implements OnMapReadyCallback {
 
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(marker, 13));
 
-        googleMap.addMarker(new MarkerOptions().title("Hello Google Maps!").position(marker));
+        mGoogleApiClient = googleMap;
+
+        googleMap.setOnMapClickListener(this);
+
+    }
+
+    @Override
+    public void onMapClick(LatLng latLng) {
+        mGoogleApiClient.addMarker(new MarkerOptions().title("Hello Google Maps!").position(latLng));
+        listenOnMapClick.buttonClicked(latLng);
     }
 }
