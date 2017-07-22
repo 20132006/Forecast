@@ -11,8 +11,8 @@ public class OpenWeatherMap {
     private List<Weather> weather;
     private String base;
     private Main main;
+    private int visibility;
     private Wind wind;
-    private Rain rain;
     private Clouds clouds;
     private int dt;
     private Sys sys;
@@ -23,19 +23,27 @@ public class OpenWeatherMap {
     public OpenWeatherMap() {
     }
 
-    public OpenWeatherMap(Coord coord, List<Weather> weatherList, String base, Main main, Wind wind, Rain rain, Clouds clouds, int dt, Sys sys, int id, String name, int cod) {
+    public OpenWeatherMap(Coord coord, List<Weather> weather, String base, Main main, int visibility, Wind wind, Clouds clouds, int dt, Sys sys, int id, String name, int cod) {
         this.coord = coord;
-        this.weather = weatherList;
+        this.weather = weather;
         this.base = base;
         this.main = main;
+        this.visibility = visibility;
         this.wind = wind;
-        this.rain = rain;
         this.clouds = clouds;
         this.dt = dt;
         this.sys = sys;
         this.id = id;
         this.name = name;
         this.cod = cod;
+    }
+
+    public int getVisibility() {
+        return visibility;
+    }
+
+    public void setVisibility(int visibility) {
+        this.visibility = visibility;
     }
 
     public Coord getCoord() {
@@ -76,14 +84,6 @@ public class OpenWeatherMap {
 
     public void setWind(Wind wind) {
         this.wind = wind;
-    }
-
-    public Rain getRain() {
-        return rain;
-    }
-
-    public void setRain(Rain rain) {
-        this.rain = rain;
     }
 
     public Clouds getClouds() {

@@ -7,5 +7,5 @@ import com.google.android.gms.maps.model.LatLng;
  */
 
 public interface onMapClicked {
-    public void buttonClicked(LatLng latLng);
+    public void buttonClicked(String cityName);
 }

@@ -5,6 +5,9 @@ import com.google.android.gms.nearby.messages.Strategy;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -14,10 +17,16 @@ import java.util.Date;
 public class Common {
     public static String API_KEY  = "c2509ca9baf3d0664481fc5a215633cb";
     public static String API_LINK = "http://api.openweathermap.org/data/2.5/weather";
+    public static String API_LINK7 = "http://api.openweathermap.org/data/2.5/forecast/daily";
 
-    public static String apiRequest (String lat, String lng){
+    public static String apiRequest (String cityName){
         StringBuilder sb = new StringBuilder (API_LINK);
-        sb.append(String.format("?lat=%s&lon=%s&APPID=%s&units=metric", lat, lng, API_KEY));
+        sb.append(String.format("?q=%s&APPID=%s&units=metric", cityName, API_KEY));
+        return sb.toString();
+    }
+    public static String apiRequest (String cityName, String num){
+        StringBuilder sb = new StringBuilder (API_LINK7);
+        sb.append(String.format("?q=%s&cnt=%s&APPID=%s&units=metric", cityName, num, API_KEY));
         return sb.toString();
     }
 
@@ -37,6 +46,17 @@ public class Common {
         DateFormat dateFormat = new SimpleDateFormat("dd MMMM yyyy HH:mm");
         Date date = new Date();
         return dateFormat.format(date);
+    }
+    public static String  ConvertToDate(int N){
+
+        Date dt = new Date();
+        Calendar c = Calendar.getInstance();
+        c.setTime(dt);
+        c.add(Calendar.DATE, N);
+        dt = c.getTime();
+
+        DateFormat dateFormat = new SimpleDateFormat("dd MMM yyyy");
+        return dateFormat.format(dt);
     }
 
 }
