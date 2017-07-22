@@ -1,12 +1,7 @@
 package com.example.artlab.forecast.Common;
 
-import com.google.android.gms.drive.internal.StringListResponse;
-import com.google.android.gms.nearby.messages.Strategy;
-
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.Calendar;
 import java.util.Date;
 

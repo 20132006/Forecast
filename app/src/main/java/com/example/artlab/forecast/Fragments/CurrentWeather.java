@@ -2,7 +2,6 @@ package com.example.artlab.forecast.Fragments;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.support.design.widget.FloatingActionButton;
@@ -18,7 +17,6 @@ import android.widget.TextView;
 
 import com.example.artlab.forecast.Common.Common;
 import com.example.artlab.forecast.Helper.Helper;
-import com.example.artlab.forecast.MainActivity;
 import com.example.artlab.forecast.Model.OpenWeatherMap;
 import com.example.artlab.forecast.R;
 import com.example.artlab.forecast.onMapClicked;

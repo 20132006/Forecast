@@ -16,15 +16,12 @@ import android.widget.TextView;
 
 import com.example.artlab.forecast.Common.Common;
 import com.example.artlab.forecast.Helper.Helper;
-import com.example.artlab.forecast.Model.OpenWeatherMap;
 import com.example.artlab.forecast.Model.OpenWeatherMapWeek;
 import com.example.artlab.forecast.R;
 import com.example.artlab.forecast.onMapClicked;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.squareup.picasso.Picasso;
-
-import org.w3c.dom.Text;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
